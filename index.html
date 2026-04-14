@@ -325,10 +325,10 @@
   .gallery {
     position: relative;
     width: 100%;
-    height: 260px;
+    height: 320px;
     margin-bottom: 32px;
     overflow: hidden;
-    background: #111;
+    background: var(--gray);
   }
 
   .gallery-slides {
@@ -350,6 +350,7 @@
     height: 100%;
     object-fit: contain;
     filter: brightness(0.95);
+    mix-blend-mode: multiply;
   }
 
   .gallery-btn {
