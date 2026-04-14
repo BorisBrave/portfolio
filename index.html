@@ -211,6 +211,21 @@
     filter: brightness(1.05);
   }
 
+  .product-img-split {
+    width: 100%;
+    height: 280px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  .product-img-split img {
+    width: 50%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   .product-img-wrap {
     width: 100%;
     height: 280px;
@@ -578,7 +593,10 @@
 
     <!-- STM Камеры -->
     <div class="product-card">
-      <div class="product-img-placeholder">Фото продукта</div>
+      <div class="product-img-split">
+        <img src="https://img.mvideo.ru/Pdb/400455461b.jpg" alt="STM WC21">
+        <img src="https://img.mvideo.ru/Pdb/400455462b.jpg" alt="STM WC32">
+      </div>
       <div class="product-brand">STM</div>
       <div class="product-name">STM WC21 / WC32<br>Вебкамеры</div>
       <div class="product-desc">Две модели под запрос МВидео. Отбор поставщиков, тестирование, согласование ключевых характеристик.</div>
