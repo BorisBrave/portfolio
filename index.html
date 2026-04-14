@@ -211,6 +211,22 @@
     filter: brightness(1.05);
   }
 
+  .product-img-wrap {
+    width: 100%;
+    height: 280px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   .product-img-placeholder {
     width: 100%;
     height: 200px;
@@ -319,87 +335,6 @@
 
   .product-link::after {
     content: '→';
-  }
-
-  /* GALLERY */
-  .gallery {
-    position: relative;
-    width: 100%;
-    height: 320px;
-    margin-bottom: 32px;
-    overflow: hidden;
-    background: var(--gray);
-  }
-
-  .gallery-slides {
-    display: flex;
-    height: 100%;
-    transition: transform 0.4s ease;
-  }
-
-  .gallery-slide {
-    min-width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .gallery-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: brightness(0.95);
-    mix-blend-mode: multiply;
-  }
-
-  .gallery-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    border: 1px solid #333;
-    color: var(--white);
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.2s, border-color 0.2s;
-    z-index: 2;
-  }
-
-  .gallery-btn:hover {
-    background: rgba(200,255,0,0.15);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .gallery-btn.prev { left: 8px; }
-  .gallery-btn.next { right: 8px; }
-
-  .gallery-dots {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-  }
-
-  .gallery-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #444;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .gallery-dot.active {
-    background: var(--accent);
   }
 
   /* ABOUT */
@@ -572,21 +507,8 @@
 
     <!-- JUST AC TV -->
     <div class="product-card">
-      <div class="gallery" id="gallery-monitor">
-        <div class="gallery-slides" id="slides-monitor">
-          <div class="gallery-slide"><img src="monitor-1.jpg" alt="JUST AC TV — вид спереди"></div>
-          <div class="gallery-slide"><img src="monitor-2.jpg" alt="JUST AC TV — угол 3/4"></div>
-          <div class="gallery-slide"><img src="monitor-3.jpg" alt="JUST AC TV — боковой вид"></div>
-          <div class="gallery-slide"><img src="monitor-4.jpg" alt="JUST AC TV — вид сзади"></div>
-        </div>
-        <button class="gallery-btn prev" onclick="galleryPrev('monitor')">‹</button>
-        <button class="gallery-btn next" onclick="galleryNext('monitor')">›</button>
-        <div class="gallery-dots" id="dots-monitor">
-          <div class="gallery-dot active" onclick="galleryGo('monitor', 0)"></div>
-          <div class="gallery-dot" onclick="galleryGo('monitor', 1)"></div>
-          <div class="gallery-dot" onclick="galleryGo('monitor', 2)"></div>
-          <div class="gallery-dot" onclick="galleryGo('monitor', 3)"></div>
-        </div>
+      <div class="product-img-wrap">
+        <img src="https://img.mvideo.ru/Pdb/400509484b.jpg" alt="JUST AC TV мобильный монитор">
       </div>
       <div class="product-brand">JUST</div>
       <div class="product-name">JUST AC TV<br>Мобильный монитор</div>
@@ -620,10 +542,8 @@
 
     <!-- STM PS101 -->
     <div class="product-card">
-      <div class="gallery" id="gallery-ps101">
-        <div class="gallery-slides" id="slides-ps101">
-          <div class="gallery-slide"><img src="https://img.mvideo.ru/Big/50130690bb.jpg" alt="STM PS101 сетевой фильтр"></div>
-        </div>
+      <div class="product-img-wrap">
+        <img src="https://img.mvideo.ru/Big/50130690bb.jpg" alt="STM PS101 сетевой фильтр">
       </div>
       <div class="product-brand">STM</div>
       <div class="product-name">STM PS101<br>Сетевой фильтр</div>
@@ -694,38 +614,5 @@
   </div>
 </section>
 
-<script>
-  const galleryState = {};
-
-  function galleryInit(id, total) {
-    galleryState[id] = { current: 0, total };
-  }
-
-  function galleryUpdate(id) {
-    const { current, total } = galleryState[id];
-    document.getElementById('slides-' + id).style.transform = `translateX(-${current * 100}%)`;
-    const dots = document.querySelectorAll('#dots-' + id + ' .gallery-dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  function galleryNext(id) {
-    const s = galleryState[id];
-    s.current = (s.current + 1) % s.total;
-    galleryUpdate(id);
-  }
-
-  function galleryPrev(id) {
-    const s = galleryState[id];
-    s.current = (s.current - 1 + s.total) % s.total;
-    galleryUpdate(id);
-  }
-
-  function galleryGo(id, index) {
-    galleryState[id].current = index;
-    galleryUpdate(id);
-  }
-
-  galleryInit('monitor', 4);
-</script>
 </body>
 </html>
