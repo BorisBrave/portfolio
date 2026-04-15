@@ -408,6 +408,49 @@
     color: var(--accent);
   }
 
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 1px solid #222;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 32px;
+    color: var(--white);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .lightbox-close:hover {
+    color: var(--accent);
+  }
+
+  .product-img-wrap img {
+    cursor: zoom-in;
+  }
+
   /* CONTACT */
   .contact-section {
     text-align: center;
@@ -494,7 +537,10 @@
 <!-- HEADER -->
 <header>
   <div class="header-tag">Продуктовое портфолио</div>
-  <h1>Борис<br><span>Строкин</span></h1>
+  <div style="display:flex; align-items:center; gap:32px; margin-bottom:40px;">
+    <img src="https://img.hhcdn.ru/photo/785143863.jpeg?t=1776334095&h=5k80qJCp595GBBVoZMf19Q" alt="Борис Строкин" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid #2a2a2a; opacity:0; animation:fadeUp 0.8s ease forwards 0.2s;">
+    <h1 style="margin-bottom:0;">Борис<br><span>Строкин</span></h1>
+  </div>
   <p class="header-desc">Продакт-менеджер с опытом полного цикла запуска физических продуктов — от переговоров с производителями в Китае до вывода на маркетплейсы и розничные сети.</p>
   <div class="header-stats">
     <div class="stat">
@@ -619,11 +665,11 @@
         <img src="https://img.mvideo.ru/Pdb/400455461b.jpg" alt="STM WC21">
       </div>
       <div class="product-brand">STM</div>
-      <div class="product-name">STM WC21<br>Вебкамера Full HD</div>
-      <div class="product-desc">Запуск под запрос МВидео. Отбор поставщика, тестирование сэмплов, согласование характеристик.</div>
+      <div class="product-name">STM WC21<br>Вебкамера 2K</div>
+      <div class="product-desc">Модель повышенного разрешения для требовательных пользователей. Встроенная шторка приватности — инициировал включение как ключевой фичи.</div>
       <div class="product-tags">
         <span class="tag">Периферия</span>
-        <span class="tag">Full HD</span>
+        <span class="tag">2K</span>
       </div>
       <div class="product-status">
         <span class="status-dot inactive"></span>
@@ -640,11 +686,11 @@
         <img src="https://img.mvideo.ru/Pdb/400455462b.jpg" alt="STM WC32">
       </div>
       <div class="product-brand">STM</div>
-      <div class="product-name">STM WC32<br>Вебкамера 2K</div>
-      <div class="product-desc">Запуск под запрос МВидео. Отбор поставщика, тестирование сэмплов, согласование характеристик.</div>
+      <div class="product-name">STM WC32<br>Вебкамера Full HD</div>
+      <div class="product-desc">Бюджетная модель для широкой аудитории. Встроенная шторка приватности — инициировал включение как ключевой фичи.</div>
       <div class="product-tags">
         <span class="tag">Периферия</span>
-        <span class="tag">2K</span>
+        <span class="tag">Full HD</span>
       </div>
       <div class="product-status">
         <span class="status-dot inactive"></span>
@@ -680,6 +726,35 @@
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  document.querySelectorAll('.product-img-wrap img').forEach(img => {
+    img.addEventListener('click', function() {
+      openLightbox(this.src);
+    });
+  });
+</script>
 
 </body>
 </html>
