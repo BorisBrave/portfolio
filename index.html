@@ -14,10 +14,10 @@
     --gray-mid: #2a2a2a;
     --gray-light: #888;
     --text: #e0e0d8;
+    --photo-border: #c8ff00;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -28,7 +28,6 @@
     overflow-x: hidden;
   }
 
-  /* HEADER */
   header {
     min-height: 100vh;
     display: flex;
@@ -42,128 +41,92 @@
   header::before {
     content: '';
     position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(200,255,0,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .header-tag {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 40px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s;
+  }
+
+  .header-photo-block {
+    display: flex; align-items: center; gap: 40px;
     margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .header-photo {
+    width: 200px; height: 200px;
+    border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--photo-border);
+    flex-shrink: 0;
   }
 
   h1 {
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(42px, 7vw, 96px);
-    font-weight: 700;
-    line-height: 0.95;
-    color: var(--white);
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
+    font-size: clamp(36px, 6vw, 86px);
+    font-weight: 700; line-height: 0.95;
+    color: var(--white); margin-bottom: 0;
   }
 
-  h1 span {
-    color: var(--accent);
-  }
+  h1 span { color: var(--accent); }
 
   .header-desc {
-    max-width: 520px;
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--gray-light);
-    margin-bottom: 60px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
+    max-width: 520px; font-size: 16px; line-height: 1.7;
+    color: var(--gray-light); margin-bottom: 60px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s;
   }
 
   .header-stats {
-    display: flex;
-    gap: 60px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
+    display: flex; gap: 60px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
   }
 
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+  .stat { display: flex; flex-direction: column; gap: 6px; }
 
   .stat-num {
     font-family: 'Unbounded', sans-serif;
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--white);
+    font-size: 32px; font-weight: 600; color: var(--white);
   }
 
   .stat-label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-light);
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gray-light);
   }
 
   .scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    left: 60px;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gray-light);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1.2s;
+    position: absolute; bottom: 40px; left: 60px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gray-light); display: flex; align-items: center; gap: 16px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 1s;
   }
 
   .scroll-hint::before {
-    content: '';
-    width: 40px;
-    height: 1px;
-    background: var(--gray-light);
+    content: ''; width: 40px; height: 1px; background: var(--gray-light);
   }
 
-  /* SECTION */
-  section {
-    padding: 120px 60px;
-  }
+  section { padding: 120px 60px; }
 
   .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 24px;
-    margin-bottom: 80px;
+    display: flex; align-items: baseline; gap: 24px; margin-bottom: 80px;
   }
 
   .section-num {
     font-family: 'Unbounded', sans-serif;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.2em;
+    font-size: 11px; color: var(--accent); letter-spacing: 0.2em;
   }
 
   .section-title {
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.1;
+    font-size: clamp(28px, 4vw, 48px); font-weight: 600;
+    color: var(--white); line-height: 1.1;
   }
 
-  /* PRODUCTS GRID */
   .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -171,345 +134,123 @@
   }
 
   .product-card {
-    background: var(--gray);
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
+    background: var(--gray); padding: 48px 40px;
+    position: relative; overflow: hidden;
     transition: background 0.3s ease;
-    cursor: default;
   }
 
-  .product-card:hover {
-    background: var(--gray-mid);
-  }
+  .product-card:hover { background: var(--gray-mid); }
 
   .product-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--accent);
     transition: width 0.4s ease;
   }
 
-  .product-card:hover::after {
-    width: 100%;
-  }
-
-  .product-img {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 32px;
-    filter: brightness(0.95);
-    transition: filter 0.3s ease;
-  }
-
-  .product-card:hover .product-img {
-    filter: brightness(1.05);
-  }
-
-  .product-img-split {
-    width: 100%;
-    height: 160px;
-    margin-bottom: 32px;
-    display: flex;
-    gap: 8px;
-    overflow: hidden;
-    align-items: center;
-    background: var(--gray);
-  }
-
-  .product-img-split img {
-    width: 50%;
-    height: 100%;
-    object-fit: contain;
-  }
+  .product-card:hover::after { width: 100%; }
 
   .product-img-wrap {
-    width: 100%;
-    height: 280px;
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    width: 100%; height: 260px; margin-bottom: 32px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; background: #f8f8f6;
   }
 
   .product-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .product-img-placeholder {
-    width: 100%;
-    height: 200px;
-    background: var(--gray-mid);
-    border: 1px dashed #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 32px;
-    font-size: 12px;
-    color: #444;
-    letter-spacing: 0.1em;
+    width: 100%; height: 100%; object-fit: contain; cursor: zoom-in;
   }
 
   .product-brand {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
   }
 
   .product-name {
     font-family: 'Unbounded', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 16px;
-    line-height: 1.3;
+    font-size: 18px; font-weight: 600;
+    color: var(--white); margin-bottom: 16px; line-height: 1.3;
   }
 
   .product-desc {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--gray-light);
-    margin-bottom: 24px;
+    font-size: 14px; line-height: 1.6;
+    color: var(--gray-light); margin-bottom: 24px;
   }
 
-  .product-role {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-light);
-    border: 1px solid #333;
-    padding: 6px 14px;
-    margin-bottom: 24px;
-  }
-
-  .product-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 28px;
-  }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 
   .tag {
-    font-size: 11px;
-    background: rgba(200,255,0,0.08);
-    color: var(--accent);
-    padding: 4px 12px;
-    border-radius: 2px;
-    letter-spacing: 0.05em;
+    font-size: 11px; background: rgba(200,255,0,0.08);
+    color: var(--accent); padding: 4px 12px;
+    border-radius: 2px; letter-spacing: 0.05em;
   }
 
   .product-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--gray-light);
-    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--gray-light); margin-bottom: 20px;
   }
 
   .status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s infinite;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); animation: pulse 2s infinite;
   }
 
-  .status-dot.inactive {
-    background: #444;
-    animation: none;
-  }
+  .status-dot.inactive { background: #444; animation: none; }
+
+  .product-links { display: flex; flex-direction: column; gap: 10px; }
 
   .product-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-    border-bottom: 1px solid #333;
-    padding-bottom: 4px;
-    transition: border-color 0.3s, color 0.3s;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); text-decoration: none;
+    border-bottom: 1px solid #333; padding-bottom: 4px;
+    transition: border-color 0.3s, color 0.3s; width: fit-content;
   }
 
-  .product-link:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
+  .product-link:hover { color: var(--accent); border-color: var(--accent); }
+  .product-link::after { content: '→'; }
 
-  .product-link::after {
-    content: '→';
-  }
-
-  .product-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* ABOUT */
-  .about-section {
-    background: var(--gray);
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .about-text {
-    font-size: 16px;
-    line-height: 1.8;
-    color: var(--gray-light);
-  }
-
-  .about-text p {
-    margin-bottom: 20px;
-  }
-
-  .about-skills {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .skill-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #222;
-  }
-
-  .skill-name {
-    font-size: 14px;
-    color: var(--text);
-  }
-
-  .skill-level {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  /* LIGHTBOX */
-  .lightbox {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.92);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    cursor: zoom-out;
-  }
-
-  .lightbox.active {
-    display: flex;
-  }
-
-  .lightbox img {
-    max-width: 90vw;
-    max-height: 90vh;
-    object-fit: contain;
-    border: 1px solid #222;
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 24px;
-    right: 32px;
-    font-size: 32px;
-    color: var(--white);
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.2s;
-  }
-
-  .lightbox-close:hover {
-    color: var(--accent);
-  }
-
-  .product-img-wrap img {
-    cursor: zoom-in;
-  }
-
-  /* CONTACT */
-  .contact-section {
-    text-align: center;
-    padding: 120px 60px;
-  }
+  .contact-section { text-align: center; padding: 120px 60px; }
 
   .contact-title {
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(36px, 6vw, 80px);
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 60px;
+    font-size: clamp(36px, 6vw, 80px); font-weight: 700;
+    color: var(--white); line-height: 1; margin-bottom: 60px;
   }
 
-  .contact-title span {
-    color: var(--accent);
-  }
+  .contact-title span { color: var(--accent); }
 
-  .contacts {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
+  .contacts { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
 
-  .contact-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-  }
+  .contact-item { display: flex; flex-direction: column; gap: 8px; align-items: center; }
 
   .contact-label {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gray-light);
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-light);
   }
 
   .contact-value {
-    font-size: 16px;
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.3s;
+    font-size: 16px; color: var(--white); text-decoration: none; transition: color 0.3s;
   }
 
-  .contact-value:hover {
-    color: var(--accent);
+  .contact-value:hover { color: var(--accent); }
+
+  .divider { height: 1px; background: #1a1a1a; margin: 0 60px; }
+
+  .lightbox {
+    display: none; position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.92);
+    z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out;
   }
 
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: #1a1a1a;
-    margin: 0 60px;
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+
+  .lightbox-close {
+    position: absolute; top: 24px; right: 32px;
+    font-size: 32px; color: var(--white); cursor: pointer;
+    transition: color 0.2s;
   }
 
-  /* ANIMATIONS */
+  .lightbox-close:hover { color: var(--accent); }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -520,11 +261,11 @@
     50% { opacity: 0.3; }
   }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     header, section { padding: 60px 24px; }
+    .header-photo-block { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .header-photo { width: 100px; height: 100px; }
     .header-stats { gap: 32px; flex-wrap: wrap; }
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-section { padding: 80px 24px; }
     .contacts { gap: 32px; }
     .divider { margin: 0 24px; }
@@ -534,168 +275,101 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="header-tag">Продуктовое портфолио</div>
-  <div style="display:flex; align-items:center; gap:32px; margin-bottom:40px;">
-    <img src="https://img.hhcdn.ru/photo/785143863.jpeg?t=1776334095&h=5k80qJCp595GBBVoZMf19Q" alt="Борис Строкин" style="width:240px; height:240px; border-radius:50%; object-fit:cover; border:2px solid #2a2a2a; opacity:0; animation:fadeUp 0.8s ease forwards 0.2s;">
-    <h1 style="margin-bottom:0;">Борис<br><span>Строкин</span></h1>
+  <div class="header-photo-block">
+    <img src="https://img.hhcdn.ru/photo/785143863.jpeg?t=1776334095&h=5k80qJCp595GBBVoZMf19Q" alt="Борис Строкин" class="header-photo">
+    <h1>Борис<br><span>Строкин</span></h1>
   </div>
   <p class="header-desc">Продакт-менеджер с опытом полного цикла запуска физических продуктов — от переговоров с производителями в Китае до вывода на маркетплейсы и розничные сети.</p>
   <div class="header-stats">
-    <div class="stat">
-      <span class="stat-num">3+</span>
-      <span class="stat-label">Года опыта</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">12+</span>
-      <span class="stat-label">SKU</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">2</span>
-      <span class="stat-label">Бренда</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">7+</span>
-      <span class="stat-label">Каналов продаж</span>
-    </div>
+    <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Года опыта</span></div>
+    <div class="stat"><span class="stat-num">12+</span><span class="stat-label">SKU</span></div>
+    <div class="stat"><span class="stat-num">2</span><span class="stat-label">Бренда</span></div>
+    <div class="stat"><span class="stat-num">7+</span><span class="stat-label">Каналов продаж</span></div>
   </div>
   <div class="scroll-hint">Портфолио</div>
 </header>
 
 <div class="divider"></div>
 
-<!-- PRODUCTS -->
 <section>
   <div class="section-header">
     <span class="section-num">01</span>
     <h2 class="section-title">Продукты</h2>
   </div>
-
   <div class="products-grid">
 
-    <!-- JUST AC TV -->
     <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="https://img.mvideo.ru/Pdb/400509484b.jpg" alt="JUST AC TV мобильный монитор">
-      </div>
+      <div class="product-img-wrap"><img src="https://img.mvideo.ru/Pdb/400509484b.jpg" alt="JUST AC TV"></div>
       <div class="product-brand">JUST</div>
       <div class="product-name">JUST AC TV<br>Мобильный монитор</div>
       <div class="product-desc">Портативный монитор для мобильных сценариев использования. Полный продуктовый цикл — от переговоров с производителем до вывода на полку.</div>
-      <div class="product-tags">
-        <span class="tag">Android</span>
-        <span class="tag">Мобильный монитор</span>
-      </div>
-      <div class="product-status">
-        <span class="status-dot"></span>
-        Активные продажи
-      </div>
+      <div class="product-tags"><span class="tag">Android</span><span class="tag">Мобильный монитор</span></div>
+      <div class="product-status"><span class="status-dot"></span>Активные продажи</div>
       <div class="product-links">
         <a href="https://just-tv.ru/" target="_blank" class="product-link">Сайт бренда</a>
         <a href="https://market.yandex.ru/cc/9DPfVu" target="_blank" class="product-link">Яндекс.Маркет</a>
       </div>
     </div>
+
     <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="https://stm-power.ru/wp-content/uploads/2019/06/004_result.jpg" alt="STM PS101 сетевой фильтр">
-      </div>
+      <div class="product-img-wrap"><img src="https://stm-power.ru/wp-content/uploads/2019/06/004_result.jpg" alt="STM PS101"></div>
       <div class="product-brand">STM</div>
       <div class="product-name">STM PS101<br>Сетевой фильтр</div>
       <div class="product-desc">Премиальная модель для федерального ритейла. Две ревизии продукта под изменения рынка.</div>
-      <div class="product-tags">
-        <span class="tag">Сетевой фильтр</span>
-        <span class="tag">Премиум</span>
-      </div>
-      <div class="product-status">
-        <span class="status-dot"></span>
-        Активные продажи
-      </div>
+      <div class="product-tags"><span class="tag">Сетевой фильтр</span><span class="tag">Премиум</span></div>
+      <div class="product-status"><span class="status-dot"></span>Активные продажи</div>
       <div class="product-links">
         <a href="https://stm-power.ru/product/stm-ps101-ntu/" target="_blank" class="product-link">Сайт бренда</a>
         <a href="https://ozon.ru/t/MtE9HFU" target="_blank" class="product-link">Ozon</a>
       </div>
     </div>
 
-    <!-- STM MS1RGB -->
     <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="https://stm-power.ru/wp-content/uploads/2024/02/主图1.jpg" alt="STM MS1RGB чёрная подставка">
-      </div>
+      <div class="product-img-wrap"><img src="https://stm-power.ru/wp-content/uploads/2024/02/主图1.jpg" alt="STM MS1RGB"></div>
       <div class="product-brand">STM</div>
       <div class="product-name">STM MS1RGB<br>Подставка для монитора</div>
       <div class="product-desc">Новая категория в портфеле бренда. Геймерское позиционирование, чёрная модель.</div>
-      <div class="product-tags">
-        <span class="tag">Аксессуары</span>
-        <span class="tag">Gaming</span>
-      </div>
-      <div class="product-status">
-        <span class="status-dot"></span>
-        Активные продажи
-      </div>
+      <div class="product-tags"><span class="tag">Аксессуары</span><span class="tag">Gaming</span></div>
+      <div class="product-status"><span class="status-dot"></span>Активные продажи</div>
       <div class="product-links">
         <a href="https://stm-power.ru/product/stm-ms1rgb/" target="_blank" class="product-link">Сайт бренда</a>
       </div>
     </div>
 
-    <!-- STM MS2RGB -->
     <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="https://stm-power.ru/wp-content/uploads/2024/11/WechatIMG2521.jpg" alt="STM MS2RGB белая подставка">
-      </div>
+      <div class="product-img-wrap"><img src="https://stm-power.ru/wp-content/uploads/2024/11/WechatIMG2521.jpg" alt="STM MS2RGB"></div>
       <div class="product-brand">STM</div>
       <div class="product-name">STM MS2RGB<br>Подставка для монитора</div>
       <div class="product-desc">Новая категория в портфеле бренда. Геймерское позиционирование, белая модель.</div>
-      <div class="product-tags">
-        <span class="tag">Аксессуары</span>
-        <span class="tag">Gaming</span>
-      </div>
-      <div class="product-status">
-        <span class="status-dot"></span>
-        Активные продажи
-      </div>
+      <div class="product-tags"><span class="tag">Аксессуары</span><span class="tag">Gaming</span></div>
+      <div class="product-status"><span class="status-dot"></span>Активные продажи</div>
       <div class="product-links">
         <a href="https://stm-power.ru/product/stm-ms2rgb/" target="_blank" class="product-link">Сайт бренда</a>
         <a href="https://ozon.ru/t/mOhPHN3" target="_blank" class="product-link">Ozon</a>
       </div>
     </div>
 
-    <!-- STM WC21 -->
     <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="https://img.mvideo.ru/Pdb/400455461b.jpg" alt="STM WC21">
-      </div>
+      <div class="product-img-wrap"><img src="https://img.mvideo.ru/Pdb/400455461b.jpg" alt="STM WC21"></div>
       <div class="product-brand">STM</div>
       <div class="product-name">STM WC21<br>Вебкамера 2K</div>
       <div class="product-desc">Модель повышенного разрешения для требовательных пользователей. Встроенная шторка приватности — инициировал включение как ключевой фичи.</div>
-      <div class="product-tags">
-        <span class="tag">Периферия</span>
-        <span class="tag">2K</span>
-      </div>
-      <div class="product-status">
-        <span class="status-dot inactive"></span>
-        Ограниченные продажи
-      </div>
+      <div class="product-tags"><span class="tag">Периферия</span><span class="tag">2K</span></div>
+      <div class="product-status"><span class="status-dot inactive"></span>Ограниченные продажи</div>
       <div class="product-links">
         <a href="https://www.mvideo.ru/products/web-kamera-stm-wc21-400455461" target="_blank" class="product-link">МВидео</a>
       </div>
     </div>
 
-    <!-- STM WC32 -->
     <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="https://img.mvideo.ru/Pdb/400455462b.jpg" alt="STM WC32">
-      </div>
+      <div class="product-img-wrap"><img src="https://img.mvideo.ru/Pdb/400455462b.jpg" alt="STM WC32"></div>
       <div class="product-brand">STM</div>
       <div class="product-name">STM WC32<br>Вебкамера Full HD</div>
       <div class="product-desc">Бюджетная модель для широкой аудитории. Встроенная шторка приватности — инициировал включение как ключевой фичи.</div>
-      <div class="product-tags">
-        <span class="tag">Периферия</span>
-        <span class="tag">Full HD</span>
-      </div>
-      <div class="product-status">
-        <span class="status-dot inactive"></span>
-        Ограниченные продажи
-      </div>
+      <div class="product-tags"><span class="tag">Периферия</span><span class="tag">Full HD</span></div>
+      <div class="product-status"><span class="status-dot inactive"></span>Ограниченные продажи</div>
       <div class="product-links">
         <a href="https://www.mvideo.ru/products/web-kamera-stm-wc32-400455462" target="_blank" class="product-link">МВидео</a>
       </div>
@@ -704,32 +378,20 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<div class="divider"></div>
+
 <section class="contact-section">
   <div class="contact-title">На<br><span>связи</span></div>
   <div class="contacts">
-    <div class="contact-item">
-      <span class="contact-label">Телефон</span>
-      <a href="tel:+79636301621" class="contact-value">+7 (963) 630-16-21</a>
-    </div>
-    <div class="contact-item">
-      <span class="contact-label">Telegram</span>
-      <a href="https://t.me/thebravest" class="contact-value">@thebravest</a>
-    </div>
-    <div class="contact-item">
-      <span class="contact-label">Email</span>
-      <a href="mailto:boris-junior@mail.ru" class="contact-value">boris-junior@mail.ru</a>
-    </div>
-    <div class="contact-item">
-      <span class="contact-label">Резюме</span>
-      <a href="https://hh.ru/resume/8801d58fff10294cd60039ed1f6b6e774d3634" target="_blank" class="contact-value">hh.ru →</a>
-    </div>
+    <div class="contact-item"><span class="contact-label">Телефон</span><a href="tel:+79636301621" class="contact-value">+7 (963) 630-16-21</a></div>
+    <div class="contact-item"><span class="contact-label">Telegram</span><a href="https://t.me/thebravest" class="contact-value">@thebravest</a></div>
+    <div class="contact-item"><span class="contact-label">Email</span><a href="mailto:boris-junior@mail.ru" class="contact-value">boris-junior@mail.ru</a></div>
+    <div class="contact-item"><span class="contact-label">Резюме</span><a href="https://hh.ru/resume/8801d58fff10294cd60039ed1f6b6e774d3634" target="_blank" class="contact-value">hh.ru →</a></div>
   </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <span class="lightbox-close">×</span>
   <img id="lightbox-img" src="" alt="">
 </div>
 
@@ -739,22 +401,14 @@
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = '';
   }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   document.querySelectorAll('.product-img-wrap img').forEach(img => {
-    img.addEventListener('click', function() {
-      openLightbox(this.src);
-    });
+    img.addEventListener('click', () => openLightbox(img.src));
   });
 </script>
-
 </body>
 </html>
